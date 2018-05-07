@@ -1,0 +1,45 @@
+# compiled output
+client-chat-app/dist
+client-chat-app/tmp
+client-chat-app/out-tsc
+
+# dependencies
+client-chat-app/node_modules/
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+client-chat-app/.sass-cache
+client-chat-app/connect.lock
+client-chat-app/coverage
+client-chat-app/libpeerconnection.log
+client-chat-app/npm-debug.log
+client-chat-app/yarn-error.log
+client-chat-app/testem.log
+client-chat-app/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Server
+*.db
+/venv
+
+
+
+
