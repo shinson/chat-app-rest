@@ -1,0 +1,13 @@
+<h1>Chat</h1>
+<li *ngFor="let message of messages">
+    {{message.user.username}}: {{message.content}}
+</li>
+
+<div>
+        <label>Send Message:
+          <input #messageContent/>
+        </label>
+        <button (click)="sendMessage(messageContent.value); messageContent.value=''">
+                Send Message
+        </button>
+</div>
