@@ -1,13 +1,22 @@
-<h1>Chat</h1>
-<li *ngFor="let message of messages">
-    {{message.user.username}}: {{message.content}}
-</li>
 
-<div>
-        <label>Send Message:
-          <input #messageContent/>
-        </label>
-        <button (click)="sendMessage(messageContent.value); messageContent.value=''">
-                Send Message
-        </button>
+<div class="containter message">
+        <div class="col-sm-12 messageList">
+                <div class="card border-dark mb-3"  *ngFor="let message of messages">
+                        <div class="card-body">
+                                <h6 class="card-title">{{message.user.username}}</h6>
+                                <p class="card-text">{{message.content}}</p>
+                        </div>
+                </div>
+        </div>
 </div>
+<nav class="navbar fixed-bottom navbar-light bg-light">
+
+                <div class="input-group">
+                                <input class="form-control" #messageContent/>
+                                <span class="input-group-btn">
+                                        <button class="btn btn-primary" (click)="sendMessage(messageContent.value); messageContent.value=''">
+                                                Send Message
+                                        </button>
+                                </span>
+                </div>
+</nav>

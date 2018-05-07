@@ -7,31 +7,44 @@ from chat_app.serializers import user_schema, users_schema, message_schema, mess
 
 
 class UserList(Resource):
-    def get(self):
+
+    @staticmethod
+    def get():
         users = db.session.query(User).all()
         result = users_schema.dump(users)
         return jsonify(result.data)
 
-    def post(self):
+    @staticmethod
+    def post():
         username = request.json['username']
-        user = User(username=username)
-        db.session.add(user)
-        db.session.commit()
+
+        user = db.session.query(User).filter(User.username == username).one_or_none()
+
+        if not user:
+            user = User(username=username)
+            db.session.add(user)
+            db.session.commit()
+
         return user_schema.jsonify(user)
 
 
 class MessageList(Resource):
-    def get(self):
-        messsages = db.session.query(Message).all()
-        result = messages_schema.dump(messsages)
+
+    @staticmethod
+    def get():
+        messages = db.session.query(Message).order_by(Message.timestamp)
+        result = messages_schema.dump(messages)
         return jsonify(result.data)
 
-    def post(self):
-        user = request.json['user']
+    @staticmethod
+    def post():
+        user_id = request.json['userId']
         content = request.json['content']
-        message = Message(user_id=user['id'], content=content)
+
+        message = Message(user_id=user_id, content=content)
         db.session.add(message)
         db.session.commit()
+
         return message_schema.jsonify(message)
 
 

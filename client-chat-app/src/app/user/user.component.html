@@ -1,14 +1,15 @@
-<h1>Users</h1>
-<li *ngFor="let user of users">
-    {{user.username}}
-</li>
-
-<div>
-        <label>Enter username:
-          <input #userName/>
-        </label>
-        <button (click)="add(userName.value); userName.value=''">
-                Add User
-        </button>
+<div class="container user">
+        <div class="row">
+                <div class="col-sm-12">
+                <div class="input-group">
+                        <input class="form-control" #userName/>
+                        <span class="input-group-btn">
+                                <button class="btn btn-primary" ngbButtonLabel (click)="add(userName.value); userName.value=''">
+                                        Enter Chat
+                                </button>
+                        </span>
+                </div>
+                </div>
+        </div>
 </div>
 
